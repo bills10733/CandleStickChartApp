@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 #from datetime import datetime
 import datetime
 
-st.sidebar.write('sidebar')
+st.sidebar.write('sidebar - not in use')
 
 st.header('EWS Daily Signal - SPX')
 
