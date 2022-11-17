@@ -7,8 +7,7 @@ import datetime
 
 st.sidebar.write('sidebar - not in use')
 
-st.header('EWS Daily Signal - SPX')
-
+#st.header('EWS Daily Signal - SPX')
 
 cnbc = Cnbc('SPX')
 df = cnbc.get_history_df(interval='1d')
