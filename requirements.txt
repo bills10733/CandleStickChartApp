@@ -1,0 +1,7 @@
+plotly
+pandas
+yfinance
+requests
+datatime
+streamlit
+
