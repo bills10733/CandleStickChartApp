@@ -11,26 +11,29 @@ import datetime
 cnbc = Cnbc('@SP.1')
 df = cnbc.get_history_df(interval='1d')
 
-df.reset_index(inplace=True)
-
-df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
-df.set_index('datetime')
-df['datetime'] = pd.to_datetime(df['datetime']).dt.date
-
 def get_current_quote(cnbc):
 
     quote = cnbc.get_quote()
-    quote_datetime = quote[0]['last_time_msec']
-    quote_close = quote[0]['last']
-    quote_open = quote[0]['open']
-    quote_high = quote[0]['high']
-    quote_low = quote[0]['low']
-    quote_volume = quote[0]['volume']
-    quote_ser = pd.Series([quote_datetime,quote_close,quote_open,quote_high,quote_low,quote_volume])
+    quote_datetime = int(quote[0]['last_time_msec'])
+    quote_close = float(quote[0]['last'])
+    quote_open = float(quote[0]['open'])
+    quote_high = float(quote[0]['high'])
+    quote_low = float(quote[0]['low'])
+    quote_volume = int(quote[0]['volume'])
+    lst=[{"datetime":quote_datetime,"close":quote_close,"open":quote_open,"high":quote_high,"low":quote_low,"volume":quote_volume}]
+    quote_ser = pd.DataFrame(lst)    
     return quote_ser
 
-test = get_current_quote(cnbc)
-test
+cur_quote = get_current_quote(cnbc)
+
+df.reset_index(inplace=True) #get rid of date time index - temporarily
+df=pd.concat([df,cur_quote],ignore_index=True) #add row with current quote
+df['datetime'] = pd.to_datetime(df['datetime'], unit='ms') #convert unix code to datetime
+df.set_index('datetime') # make datetime the index
+df['datetime'] = pd.to_datetime(df['datetime']).dt.date  #drop the time, just have the date
+
+print(df)
+
 
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 open=df['open'],
