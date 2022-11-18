@@ -2,14 +2,11 @@ import pandas as pd
 import streamlit as st
 from cnbcfinance.cnbc import Cnbc
 import plotly.graph_objects as go
-#from datetime import datetime
 import datetime
-
-st.sidebar.write('sidebar - not in use')
 
 #st.header('EWS Daily Signal - SPX')
 
-#----------- Fetch ES data -------------
+#----------- Fetch data -------------
 
 cnbc = Cnbc('@SP.1')
 df = cnbc.get_history_df(interval='1d')
@@ -19,9 +16,9 @@ df.reset_index(inplace=True)
 df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
 df.set_index('datetime')
 df['datetime'] = pd.to_datetime(df['datetime']).dt.date
-#print(df)
 
-#quote = cnbc.get_quote()
+quote = cnbc.get_quote()
+quote
 #quote[0]['last']
 
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
