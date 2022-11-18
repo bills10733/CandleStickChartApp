@@ -48,5 +48,5 @@ fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 close=df['close'])])
 fig.update_xaxes(type='category')
 
-#st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True)
 
