@@ -67,5 +67,5 @@ fig.update_xaxes(type='category')
 
 st.plotly_chart(fig, use_container_width=True)
 
-#df_SPX = get_full_history('SPX')
+df_SPX = get_full_history('SPX')
 #df_SPX
