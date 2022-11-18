@@ -9,7 +9,9 @@ st.sidebar.write('sidebar - not in use')
 
 #st.header('EWS Daily Signal - SPX')
 
-cnbc = Cnbc('SPX')
+#----------- Fetch ES data -------------
+
+cnbc = Cnbc('@SP.1')
 df = cnbc.get_history_df(interval='1d')
 
 df.reset_index(inplace=True)
