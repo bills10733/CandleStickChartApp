@@ -32,7 +32,6 @@ def get_current_quote(cnbc):
 test = get_current_quote(cnbc)
 test
 
-
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 open=df['open'],
                 high=df['high'],
