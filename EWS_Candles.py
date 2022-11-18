@@ -69,3 +69,20 @@ st.plotly_chart(fig, use_container_width=True)
 
 #df_SPX = get_full_history('SPX')
 #df_SPX
+
+#---------- IVTS determination -----------
+
+# Fetch VIX data (CNBC)
+# VIX, VIX3M, VIX9D, VIX6M
+# Add columns to DF
+# Compare each datapoint and Add column with IVTS (yes or no)
+
+#---------- FI determination -----------
+# Fetch ES and SPY data (yahoo... requires volume)
+# Caclulate FI for each
+# Add column with SPY FI and ES FI to DF
+# Compare each datapoint and Add column with FI (0,1,2)
+
+#---------- EWS determination -----------
+# Add column to main (SPX) DF to show 0,1,2 (Green, Yellow, Red)
+# Display using subchart with common index
