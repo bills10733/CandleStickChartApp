@@ -17,7 +17,7 @@ df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
 df.set_index('datetime')
 df['datetime'] = pd.to_datetime(df['datetime']).dt.date
 
-def get_current_quote(symbol):
+def get_current_quote():
 
     quote = cnbc.get_quote()
     quote_datetime = quote[0]['last_time_msec']
@@ -29,7 +29,7 @@ def get_current_quote(symbol):
     quote_ser = pd.Series([quote_datetime,quote_close,quote_open,quote_high,quote_low,quote_volume])
     return quote_ser
 
-test = get_current_quote('AAPL')
+test = get_current_quote()
 test
 
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
