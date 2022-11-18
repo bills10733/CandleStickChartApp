@@ -43,7 +43,7 @@ def get_full_history(symbol):
     df = cnbc.get_history_df(interval='1d')
 
     if symbol == 'SPX':
-        cur_quote = get_current_quote_no_volume(cnbc)(cnbc)
+        cur_quote = get_current_quote_no_volume(cnbc)
     else:
         cur_quote = get_current_quote(cnbc)
 
