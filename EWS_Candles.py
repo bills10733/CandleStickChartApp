@@ -19,7 +19,11 @@ df['datetime'] = pd.to_datetime(df['datetime']).dt.date
 
 quote = cnbc.get_quote()
 quote
-#quote[0]['last']
+quote_open = quote[0]['open']
+quote_high = quote[0]['high']
+quote_low = quote[0]['low']
+quote_close = quote[0]['last']
+quote_volume = quote[0]['volume']
 
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 open=df['open'],
