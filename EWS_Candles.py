@@ -8,9 +8,6 @@ import datetime
 
 #----------- Fetch data -------------
 
-cnbc = Cnbc('@SP.1')
-df = cnbc.get_history_df(interval='1d')
-
 def get_current_quote(cnbc):
 
     quote = cnbc.get_quote()
@@ -24,13 +21,22 @@ def get_current_quote(cnbc):
     quote_ser = pd.DataFrame(lst)    
     return quote_ser
 
-cur_quote = get_current_quote(cnbc)
 
-df.reset_index(inplace=True) #get rid of date time index - temporarily
-df=pd.concat([df,cur_quote],ignore_index=True) #add row with current quote
-df['datetime'] = pd.to_datetime(df['datetime'], unit='ms') #convert unix code to datetime
-df.set_index('datetime') # make datetime the index
-df['datetime'] = pd.to_datetime(df['datetime']).dt.date  #drop the time, just have the date
+def get_full_history(symbol):
+
+    cnbc = Cnbc(symbol)
+    df = cnbc.get_history_df(interval='1d')
+
+    cur_quote = get_current_quote(cnbc)
+
+    df.reset_index(inplace=True) #get rid of date time index - temporarily
+    df=pd.concat([df,cur_quote],ignore_index=True) #add row with current quote
+    df['datetime'] = pd.to_datetime(df['datetime'], unit='ms') #convert unix code to datetime
+    df.set_index('datetime') # make datetime the index
+    df['datetime'] = pd.to_datetime(df['datetime']).dt.date  #drop the time, just have the date
+    return df
+
+df = get_full_history('@SP.1')
 
 print(df)
 
@@ -42,5 +48,5 @@ fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 close=df['close'])])
 fig.update_xaxes(type='category')
 
-st.plotly_chart(fig, use_container_width=True)
+#st.plotly_chart(fig, use_container_width=True)
 
