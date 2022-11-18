@@ -18,8 +18,8 @@ df.reset_index(inplace=True)
 
 df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
 df.set_index('datetime')
-df = pd.to_datetime(df['datetime'].dt.date)
-print(df)
+
+#print(df)
 
 #quote = cnbc.get_quote()
 #quote[0]['last']
