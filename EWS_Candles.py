@@ -17,7 +17,7 @@ df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
 df.set_index('datetime')
 df['datetime'] = pd.to_datetime(df['datetime']).dt.date
 
-def get_current_quote():
+def get_current_quote(cnbc):
 
     quote = cnbc.get_quote()
     quote_datetime = quote[0]['last_time_msec']
@@ -29,7 +29,7 @@ def get_current_quote():
     quote_ser = pd.Series([quote_datetime,quote_close,quote_open,quote_high,quote_low,quote_volume])
     return quote_ser
 
-test = get_current_quote()
+test = get_current_quote(cnbc)
 test
 
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
@@ -38,5 +38,7 @@ fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 low=df['low'],
                 close=df['close'])])
 fig.update_xaxes(type='category')
-st.plotly_chart(fig, use_container_width=True)
-#fig.show()
+
+#uncomment to send to web app
+#st.plotly_chart(fig, use_container_width=True)
+
