@@ -32,6 +32,8 @@ def get_current_quote(cnbc):
 test = get_current_quote(cnbc)
 test
 
+df.loc[len(df.index)] = [test] 
+
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 open=df['open'],
                 high=df['high'],
@@ -39,6 +41,5 @@ fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 close=df['close'])])
 fig.update_xaxes(type='category')
 
-#uncomment to send to web app
-#st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True)
 
