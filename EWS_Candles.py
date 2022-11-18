@@ -16,9 +16,9 @@ df = cnbc.get_history_df(interval='1d')
 
 df.reset_index(inplace=True)
 
-df['datetime'] = pd.to_datetime(df['datetime'].dt.date, unit='ms')
+df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
 df.set_index('datetime')
-
+df = pd.to_datetime(df['datetime'].dt.date)
 print(df)
 
 #quote = cnbc.get_quote()
