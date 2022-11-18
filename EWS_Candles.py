@@ -16,7 +16,7 @@ df = cnbc.get_history_df(interval='1d')
 
 df.reset_index(inplace=True)
 
-df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
+df['datetime'] = pd.to_date(df['datetime'], unit='ms')
 df.set_index('datetime')
 
 print(df)
