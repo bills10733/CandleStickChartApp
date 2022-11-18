@@ -21,6 +21,7 @@ def get_current_quote(cnbc):
     quote_ser = pd.DataFrame(lst)    
     return quote_ser
 
+#-------------  Fetch full history, including adding in current day ------------------
 
 def get_full_history(symbol):
 
@@ -38,9 +39,6 @@ def get_full_history(symbol):
 
 df = get_full_history('@SP.1')
 
-print(df)
-
-
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
                 open=df['open'],
                 high=df['high'],
@@ -50,3 +48,5 @@ fig.update_xaxes(type='category')
 
 st.plotly_chart(fig, use_container_width=True)
 
+VIX_df = get_full_history('SPY')
+VIX_df
