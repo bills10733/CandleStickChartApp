@@ -24,7 +24,7 @@ quote_open = quote[0]['open']
 quote_high = quote[0]['high']
 quote_low = quote[0]['low']
 quote_volume = quote[0]['volume']
-quote_ser = pd.series[quote_datetime,quote_close,quote_open,quote_high,quote_low,quote_volume]
+quote_ser = pd.Series([quote_datetime,quote_close,quote_open,quote_high,quote_low,quote_volume])
 quote_ser
 
 fig = go.Figure(data=[go.Candlestick(x=df['datetime'],
