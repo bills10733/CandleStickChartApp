@@ -52,6 +52,7 @@ def get_IVTS():
     df_VIX6M = get_VIX_history('.VIX6M')
     df_temp1 = pd.merge(df_VIX9D,df_VIX, on='datetime')
     df_temp2 = pd.merge(df_temp1,df_VIX3M, on='datetime')
+    df_temp2.columns = ['datetime', 'VIX9D', 'VIX','VIX3M']
     df_All = pd.merge(df_temp2,df_VIX6M, on='datetime')
     df_All.columns = ['datetime', 'VIX9D', 'VIX', 'VIX3M','VIX6M']
     df_All.drop_duplicates(subset=['VIX9D', 'VIX', 'VIX3M','VIX6M'],inplace=True)
