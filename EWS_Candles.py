@@ -5,7 +5,6 @@ from datetime import date
 import pandas_datareader as pdr
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from plotly.graph_objs import Marker
 import streamlit as st
 
 #----------- Fetch current-day quote for VIX data  -------------
@@ -151,7 +150,7 @@ colors = ['green' if row['EWS_State'] == 0 else 'yellow' if row['EWS_State'] == 
 fig.add_trace(go.Scatter(x=Final_df['datetime'], 
                      y=Final_df['EWS_State'],
                      mode='markers', 
-                     marker=go.Marker(),
+                     marker=go.scatter.Marker(),
                      marker_color=colors,
                     ), row=2, col=1)
 
