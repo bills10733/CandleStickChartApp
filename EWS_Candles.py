@@ -169,4 +169,4 @@ fig.for_each_yaxis(lambda x: x.update(showgrid=False, zeroline = False))
 
 #fig.show()
 st.plotly_chart(fig, use_container_width=True) # this line for plot in StreamLit
-#print(Final_df)
+print(Final_df)
