@@ -3,7 +3,7 @@ from cnbcfinance.cnbc import Cnbc
 import datetime
 from datetime import date
 import pandas_datareader as pdr
-import plotly.graph_objects as go
+import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import streamlit as st
 
