@@ -5,6 +5,7 @@ from datetime import date
 import pandas_datareader as pdr
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from plotly.graph_objs import Marker
 import streamlit as st
 
 #----------- Fetch current-day quote for VIX data  -------------
