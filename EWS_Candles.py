@@ -77,7 +77,7 @@ def ForceIndex(data):
 
 # function to Retrieve One-Year of ES data from Yahoo finance
 def RetrieveData(symbol):
-    data = pdr.get_data_yahoo(symbol, start= str(date.today()-datetime.timedelta(days = 200)), end=str(date.today())) 
+    data = pdr.get_data_yahoo(symbol, start= str(date.today()-datetime.timedelta(days = 400)), end=str(date.today())) 
     data = pd.DataFrame(data)
     return data
 
