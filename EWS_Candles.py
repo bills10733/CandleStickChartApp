@@ -7,7 +7,6 @@ import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import streamlit as st
 import yfinance as yf
-
 yf.pdr_override()
 
 #----------- Fetch current-day quote for VIX data  -------------
@@ -170,6 +169,6 @@ fig.update_layout(xaxis_rangeslider_visible=False, showlegend=False,
 fig.for_each_xaxis(lambda x: x.update(showgrid=False, zeroline = False))
 fig.for_each_yaxis(lambda x: x.update(showgrid=False, zeroline = False))
 
-#fig.show()
-st.plotly_chart(fig, use_container_width=True) # this line for plot in StreamLit
+fig.show()
+#st.plotly_chart(fig, use_container_width=True) # this line for plot in StreamLit
 #print(Final_df)
