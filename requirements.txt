@@ -2,3 +2,4 @@ plotly
 pandas
 cnbcfinance
 pandas_datareader
+yfinance
