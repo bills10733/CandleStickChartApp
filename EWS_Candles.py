@@ -2,7 +2,7 @@ import pandas as pd
 from cnbcfinance.cnbc import Cnbc
 import datetime
 from datetime import date
-import pandas_datareader as pdr
+from pandas_datareader import data as pdr
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import streamlit as st
@@ -79,6 +79,7 @@ def ForceIndex(data):
 
 # function to Retrieve One-Year of ES data from Yahoo finance
 def RetrieveData(symbol):
+
     data = pdr.get_data_yahoo(symbol, start= str(date.today()-datetime.timedelta(days = 400)), end=str(date.today())) 
     data = pd.DataFrame(data)
     return data
@@ -169,6 +170,6 @@ fig.update_layout(xaxis_rangeslider_visible=False, showlegend=False,
 fig.for_each_xaxis(lambda x: x.update(showgrid=False, zeroline = False))
 fig.for_each_yaxis(lambda x: x.update(showgrid=False, zeroline = False))
 
-fig.show()
-#st.plotly_chart(fig, use_container_width=True) # this line for plot in StreamLit
+#fig.show()
+st.plotly_chart(fig, use_container_width=True) # this line for plot in StreamLit
 #print(Final_df)
