@@ -6,6 +6,9 @@ import pandas_datareader as pdr
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import streamlit as st
+import yfinance as yf
+
+yf.pdr_override()
 
 #----------- Fetch current-day quote for VIX data  -------------
 
